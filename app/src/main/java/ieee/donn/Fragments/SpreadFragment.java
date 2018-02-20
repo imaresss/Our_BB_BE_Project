@@ -11,10 +11,7 @@ import android.widget.Button;
 import ieee.donn.R;
 
 
-/**
- * Created by rashad on 5/23/16.
- *
- */
+
 public class SpreadFragment extends Fragment {
 
     Button shareGithub, shareApp, awarenessShare;
@@ -32,7 +29,7 @@ public class SpreadFragment extends Fragment {
             public void onClick(View v) {
 
                 //TODO Add the test
-                share("#Donné is an open-source blood donation network, you can view the source code here : https://github.com/MohammedRashad/Donne");
+                share("#Dynamic Blood Bank is an open-source blood donation network, you can view the source code here : https://github.com/AzadN/BE_Project");
 
             }
         });
@@ -43,7 +40,7 @@ public class SpreadFragment extends Fragment {
 
                 //TODO Add the test
 
-                share("#Donné is an open-source blood donation network, you can get it here : https://play.google.com/store/apps/details?id=bloodbank.ieee.com.bloodbank");
+                share("#Dynamic Blood Bank is an open-source blood donation network, you can get it here : https://play.google.com/store/apps/details?id=bloodbank.ieee.com.bloodbank");
 
 
             }
@@ -53,7 +50,7 @@ public class SpreadFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                share("Everyday, All around the world, thousands of people are on the verge of dying due to their need to blood.\n\nYou can change this by giving away your blood..\n\nBecome a hero and save someone's live by giving them the gift of live!\n\n#Donné");
+                share("Everyday, All around the world, thousands of people are on the verge of dying due to their need to blood.\n\nYou can change this by giving away your blood..\n\nBecome a hero and save someone's live by giving them the gift of live!\n\n#Dynamic Blood Bank");
 
             }
         });
