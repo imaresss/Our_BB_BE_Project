@@ -107,14 +107,14 @@ public class GetBloodFragment extends Fragment {
 
                             notificationObject = new JsonObject();
                             notificationObject.addProperty("title", "Blood needed");
-                            notificationObject.addProperty("body", "Someone is searching for donors in " + country);
+                            notificationObject.addProperty("body", "Someone is searching for blood in" + country);
 
                             dataObject = new JsonObject();
                             dataObject.addProperty("blood", bloodT);
                             dataObject.addProperty("country", country);
                             dataObject.addProperty("email", email);
                             dataObject.addProperty("phone", phone);
-                            dataObject.addProperty("facebook", facebook);
+                         //   dataObject.addProperty("facebook", facebook);
                             dataObject.addProperty("name", name);
 
                             dialog.show();
@@ -310,7 +310,7 @@ public class GetBloodFragment extends Fragment {
 
         email = spf.getString("email", "");
         phone = spf.getString("phone", "");
-        facebook = spf.getString("facebook", "");
+   //     facebook = spf.getString("facebook", "");
         name = spf.getString("name", "");
 
     }

@@ -1,27 +1,35 @@
 {
   "project_info": {
-    "project_number": "1079873198181",
-    "firebase_url": "https://donne-a8d98.firebaseio.com",
-    "project_id": "donne-a8d98",
-    "storage_bucket": "donne-a8d98.appspot.com"
+    "project_number": "779728455807",
+    "firebase_url": "https://bloodbank-a103e.firebaseio.com",
+    "project_id": "bloodbank-a103e",
+    "storage_bucket": "bloodbank-a103e.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1079873198181:android:03976d33604fc66d",
+        "mobilesdk_app_id": "1:779728455807:android:03976d33604fc66d",
         "android_client_info": {
           "package_name": "ieee.donn"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1079873198181-1o0j1v783avhddveam5raftnlb9gc31m.apps.googleusercontent.com",
+          "client_id": "779728455807-vd01pfqb6q672lsbs85k5832fko977dg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ieee.donn",
+            "certificate_hash": "fac8ff1216e276c103b4ac807fe8a8061d4ee3ff"
+          }
+        },
+        {
+          "client_id": "779728455807-b4v8es8pp3lus8c2dl73rh73qn3g9ope.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDea7cCDbiuiNk42LW-OcIXRealar8n5_E"
+          "current_key": "AIzaSyDRKYeKL_ta3J8pnFLe1tDNA00rOwMhIrY"
         }
       ],
       "services": {
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "779728455807-b4v8es8pp3lus8c2dl73rh73qn3g9ope.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

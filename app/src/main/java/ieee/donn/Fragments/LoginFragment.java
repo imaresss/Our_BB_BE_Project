@@ -18,6 +18,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import dmax.dialog.SpotsDialog;
@@ -41,7 +43,8 @@ public class LoginFragment extends Fragment {
     EditText emailLogin, passLogin;
     String emailLoginStr, passLoginStr;
     FragmentTransaction fragmentTransaction;
-
+        FirebaseDatabase  mdatabase;
+        DatabaseReference mRef;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -51,7 +54,8 @@ public class LoginFragment extends Fragment {
         emailLogin = (EditText) root.findViewById(R.id.editText21);
         passLogin = (EditText) root.findViewById(R.id.editText6);
 
-
+        mdatabase = FirebaseDatabase.getInstance();
+        mRef = mdatabase.getReference("BloodBank");
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

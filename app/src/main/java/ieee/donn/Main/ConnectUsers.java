@@ -51,7 +51,7 @@ public class ConnectUsers extends AppCompatActivity {
                         blood = json_data.getString("blood");
                         city = json_data.getString("country");
                         email = json_data.getString("email");
-                        facebook = json_data.getString("facebook");
+                      //  facebook = json_data.getString("facebook");
                         name = json_data.getString("name");
                         phone = json_data.getString("phone");
 
@@ -69,11 +69,11 @@ public class ConnectUsers extends AppCompatActivity {
         data = (TextView) findViewById(R.id.data);
         patient = (TextView) findViewById(R.id.patient);
         call = (Button) findViewById(R.id.call);
-        facebookThem = (Button) findViewById(R.id.facebook);
+     //   facebookThem = (Button) findViewById(R.id.facebook);
         message = (Button) findViewById(R.id.message);
 
 
-        data.setText("Phone :  " + phone + "\nEmail:  " + email + "\nFacebook :  " + facebook + "\n");
+        data.setText("Phone :  " + phone + "\nEmail:  " + email );
         patient.setText("Name :  " + name + "\nBlood Type :  " + blood);
 
 
@@ -115,24 +115,24 @@ public class ConnectUsers extends AppCompatActivity {
             }
         });
 
-        facebookThem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent
-                        .putExtra(Intent.EXTRA_TEXT,
-                                "Hello, I have requested blood type.");
-                sendIntent.setType("text/plain");
-                sendIntent.setPackage("com.facebook.orca");
-                try {
-                    startActivity(sendIntent);
-                } catch (android.content.ActivityNotFoundException ex) {
-                    Toast.makeText(ConnectUsers.this, "Please Install Facebook Messenger", Toast.LENGTH_LONG).show();
-                }
-
-            }
-        });
+//        facebookThem.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent sendIntent = new Intent();
+//                sendIntent.setAction(Intent.ACTION_SEND);
+//                sendIntent
+//                        .putExtra(Intent.EXTRA_TEXT,
+//                                "Hello, I have requested blood type.");
+//                sendIntent.setType("text/plain");
+//                sendIntent.setPackage("com.facebook.orca");
+//                try {
+//                    startActivity(sendIntent);
+//                } catch (android.content.ActivityNotFoundException ex) {
+//                    Toast.makeText(ConnectUsers.this, "Please Install Facebook Messenger", Toast.LENGTH_LONG).show();
+//                }
+//
+//            }
+//        });
     }
 }

@@ -80,14 +80,14 @@ public class ProfileFragment extends Fragment {
 
                 name.setText("" + dataSnapshot.child("name").getValue());
                 email.setText("Email : " + dataSnapshot.child("email").getValue());
-                facebook.setText("Facebook : " + dataSnapshot.child("facebook").getValue());
+           //     facebook.setText("Facebook : " + dataSnapshot.child("facebook").getValue());
                 country.setText("City : " + dataSnapshot.child("city").getValue());
                 phone.setText("Phone : " + dataSnapshot.child("phone").getValue());
-                blood.setText("Blood Type : " + dataSnapshot.child("blood").getValue());
+                blood.setText("Blood Type : " + dataSnapshot.child("blood_group").getValue());
 
                 save("email" , ""+dataSnapshot.child("email").getValue());
                 save("phone" , ""+dataSnapshot.child("phone").getValue());
-                save("facebook" , ""+dataSnapshot.child("facebook").getValue());
+          //      save("facebook" , ""+dataSnapshot.child("facebook").getValue());
                 save("name" , ""+dataSnapshot.child("name").getValue());
 
                 dialog.dismiss();

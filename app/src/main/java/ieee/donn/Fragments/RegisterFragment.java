@@ -38,21 +38,18 @@ import dmax.dialog.SpotsDialog;
 import ieee.donn.Main.MainActivity;
 import ieee.donn.R;
 
-/**
- * Created by rashad on 5/31/16.
- * .
- */
+
 public class RegisterFragment extends Fragment {
 
     View root;
     Toolbar toolbar;
     Locale[] locale;
-    Spinner spinner;
+    Spinner spinner , blood_type;
     Button register;
-    String country;
+    String country, blood_group;
     SharedPreferences spf;
     SharedPreferences.Editor edit;
-    ArrayList<String> cities;
+    ArrayList<String> cities , blood_group_list;
     ArrayAdapter<String> adapter;
     EditText name, email, phone, blood, facebook, password;
     String nameStr, emailStr, phoneStr, bloodStr, facebookStr, passwordStr;
@@ -71,12 +68,13 @@ public class RegisterFragment extends Fragment {
         email = (EditText) root.findViewById(R.id.editText2);
         password = (EditText) root.findViewById(R.id.editText7);
         phone = (EditText) root.findViewById(R.id.editText3);
-        facebook = (EditText) root.findViewById(R.id.editText5);
-        blood = (EditText) root.findViewById(R.id.editText4);
+       // facebook = (EditText) root.findViewById(R.id.editText5);
+      //  blood = (EditText) root.findViewById(R.id.editText4);
         spinner = (Spinner) root.findViewById(R.id.spinner);
+        blood_type = (Spinner) root.findViewById(R.id.blood_type);
 
         setupSpinner();
-
+       setupSpinner1();
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -87,18 +85,28 @@ public class RegisterFragment extends Fragment {
                 if (!(position == 0) || !(position == 1)) {
 
                     country = cities.get(position);
-
                 }
-
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
             }
-
-
         });
+        blood_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
+            @Override
+            public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+
+                int position = blood_type.getSelectedItemPosition();
+
+                if (!(position == 0) || !(position == 1)) {
+
+                    blood_group = blood_group_list.get(position);
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+            }
+        });
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,21 +115,18 @@ public class RegisterFragment extends Fragment {
                 nameStr = name.getText().toString();
                 emailStr = email.getText().toString();
                 phoneStr = phone.getText().toString();
-                bloodStr = blood.getText().toString();
-                facebookStr = facebook.getText().toString();
+//                facebookStr = facebook.getText().toString();
                 passwordStr = password.getText().toString();
 
 
                 if (nameStr.isEmpty() || emailStr.isEmpty() ||
-                        phoneStr.isEmpty() || bloodStr.isEmpty() ||
-                        facebookStr.isEmpty() || passwordStr.isEmpty()) {
+                        phoneStr.isEmpty()  ||
+                        passwordStr.isEmpty()) {
 
                     Toast.makeText(getActivity(), "Fill all data please..", Toast.LENGTH_LONG).show();
 
 
                 } else {
-
-
                     final AlertDialog dialog = new SpotsDialog(getActivity(), "Loginn' in..");
                     dialog.show();
 
@@ -137,15 +142,17 @@ public class RegisterFragment extends Fragment {
                                         mFirebaseAuth = FirebaseAuth.getInstance();
                                         mFirebaseUser = mFirebaseAuth.getCurrentUser();
                                         mUserId = mFirebaseUser.getUid();
+
                                         mDatabase = FirebaseDatabase.getInstance().getReference();
 
                                         mDatabase.child("users").child(mUserId).child("data").child("email").setValue((email.getText().toString()));
                                         mDatabase.child("users").child(mUserId).child("data").child("name").setValue((name.getText().toString()));
                                         mDatabase.child("users").child(mUserId).child("data").child("phone").setValue((phone.getText().toString()));
                                         mDatabase.child("users").child(mUserId).child("data").child("password").setValue((password.getText().toString()));
-                                        mDatabase.child("users").child(mUserId).child("data").child("facebook").setValue((facebook.getText().toString()));
-                                        mDatabase.child("users").child(mUserId).child("data").child("blood").setValue((blood.getText().toString().toUpperCase()));
+                                    //    mDatabase.child("users").child(mUserId).child("data").child("facebook").setValue((facebook.getText().toString()));
+                                     //   mDatabase.child("users").child(mUserId).child("data").child("blood").setValue((blood.getText().toString().toUpperCase()));
                                         mDatabase.child("users").child(mUserId).child("data").child("city").setValue((country));
+                                       mDatabase.child("users").child(mUserId).child("data").child("blood_group").setValue(blood_group);
 
 
                                         save("email" , emailStr);
@@ -272,6 +279,33 @@ public class RegisterFragment extends Fragment {
         cities.add("Srinagar");
         cities.add("Shimla");
         cities.add("Patna");
+
+    }
+    public void setupSpinner1() {
+
+        setupCountriesList1();
+
+        adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, blood_group_list);
+        blood_type.setAdapter(adapter);
+
+
+    }
+
+    public void setupCountriesList1() {
+
+        locale = Locale.getAvailableLocales();
+        blood_group_list = new ArrayList<String>();
+
+        blood_group_list.add("Select Blood Group");
+        blood_group_list.add("A+");
+        blood_group_list.add("A-");
+        blood_group_list.add("B+");
+        blood_group_list.add("B-");
+        blood_group_list.add("O+");
+        blood_group_list.add("O-");
+        blood_group_list.add("AB+");
+        blood_group_list.add("AB-");
+
 
     }
 

@@ -27,17 +27,19 @@
             android:name=".NeedBlood.AlarmReciever"
             android:process=":remote" />
 
+        <activity android:name=".Services.ResultActivity"/>
         <service android:name=".Services.MessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <service android:name=".Services.IDService">
+
+<!---        <service android:name=".Services.IDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
-        </service>
+        </service> -->
 
         <activity
             android:name=".Main.LoginSignUp"

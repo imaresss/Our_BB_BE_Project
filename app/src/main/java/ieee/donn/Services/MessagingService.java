@@ -1,5 +1,7 @@
 package ieee.donn.Services;
 
+
+
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -24,24 +26,26 @@ import ieee.donn.R;
 
 import static android.media.RingtoneManager.getDefaultUri;
 
+
+
 /**
  * Created by rashad on 11/21/16.
  */
-public class MessagingService extends FirebaseMessagingService {
+/*public class MessagingService extends FirebaseMessagingService {
 
 
     SharedPreferences.Editor edit;
     SharedPreferences spf;
 
     private static final String TAG = "FirebaseMessageService";
-    private static final String ACTION_CONNECT_USERS = "ieee.donn.CONNECT_USERS";
+    private static final String ACTION_CONNECT_USERS = "ieee.donn.CONNECT_USERS";*/
 
     /**
      * Called when message is received.
      *
      * @param remoteMessage Object representing the message received from Firebase Cloud Messaging.
      */
-    @Override
+  /*  @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         // There are two types of messages data messages and notification messages. Data messages are handled
         // here in onMessageReceived whether the app is in the foreground or background. Data messages are the type
@@ -79,12 +83,12 @@ public class MessagingService extends FirebaseMessagingService {
         sendNotification("" + remoteMessage.getData(), bla);
 
     }
-
+*/
 
     /**
      * Create and show a simple notification containing the received FCM message.
      */
-    private void sendNotification(String messageBody, String bla) {
+/*    private void sendNotification(String messageBody, String bla) {
 
         int requestID = (int) System.currentTimeMillis();
         int NOTIFICATION_ID = createID();
@@ -110,7 +114,7 @@ public class MessagingService extends FirebaseMessagingService {
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        notificationManager.notify(100 /* ID of notification */, notificationBuilder.build());
+        notificationManager.notify(100 , notificationBuilder.build());
 
     }
 
@@ -129,5 +133,49 @@ public class MessagingService extends FirebaseMessagingService {
         edit.commit();
 
     }
-}
+}*/
 
+
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.support.v4.app.NotificationCompat;
+import android.util.Log;
+import com.google.firebase.messaging.FirebaseMessagingService;
+import com.google.firebase.messaging.RemoteMessage;
+
+ public class MessagingService extends FirebaseMessagingService {
+    private static final String TAG = "MyAndroidFCMService";
+    @Override
+    public void onMessageReceived(RemoteMessage remoteMessage) {
+        //Log data to Log Cat
+        Log.d(TAG, "From: " + remoteMessage.getFrom());
+        Log.d(TAG, "Notification Message Body: " + remoteMessage.getNotification().getBody());
+        //create notification
+        createNotification(remoteMessage.getNotification().getBody());
+    }
+
+    private void createNotification( String messageBody) {
+        Intent intent = new Intent( this , ResultActivity. class );
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent resultIntent = PendingIntent.getActivity( this , 0, intent,
+                PendingIntent.FLAG_ONE_SHOT);
+
+        Uri notificationSoundURI = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        NotificationCompat.Builder mNotificationBuilder = new NotificationCompat.Builder( this)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("Android Tutorial Point FCM Tutorial")
+                .setContentText(messageBody)
+                .setAutoCancel( true )
+                .setSound(notificationSoundURI)
+                .setContentIntent(resultIntent);
+
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        notificationManager.notify(0, mNotificationBuilder.build());
+    }
+}
