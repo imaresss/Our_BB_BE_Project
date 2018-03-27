@@ -20,7 +20,7 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
          app:menu="@menu/activity_main_drawer" />
-    <TextView
+  <!--  <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView1"
@@ -28,5 +28,5 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textStyle="bold"
         android:layout_marginTop="100dp"
-        android:textAlignment="center" />
+        android:textAlignment="center" />-->
 </android.support.v4.widget.DrawerLayout>
