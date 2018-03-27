@@ -165,14 +165,14 @@
                         android:text="Send them a message"
                         android:textColor="#fff" />
 
-                    <Button
+           <!--         <Button
                         android:id="@+id/facebook"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
                         android:background="@color/colorPrimary"
                         android:text="Chat on facebook"
-                        android:textColor="#fff" />
+                        android:textColor="#fff" />-->
 
                 </LinearLayout>
 

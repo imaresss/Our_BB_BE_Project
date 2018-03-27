@@ -36,7 +36,7 @@ public class ConnectUsers extends AppCompatActivity {
     FirebaseAuth mFirebaseAuth;
     Button logout;
     TextView name, email, phone, blood, facebook, country;
-
+String phone_number;
 
 
     String mUserId;
@@ -107,7 +107,7 @@ public class ConnectUsers extends AppCompatActivity {
 //                blood.setText("Blood Type : " + dataSnapshot.child("blood_group").getValue());
                 data.setText("Phone :  " +  dataSnapshot.child("phone").getValue() + "\nEmail:  " + dataSnapshot.child("email").getValue() );
                 patient.setText("Name :  " + dataSnapshot.child("name").getValue() + "\nBlood Type :  " + dataSnapshot.child("blood_group").getValue());
-
+            phone_number =(dataSnapshot.child("phone").getValue()).toString();
             }
 
             @Override
@@ -129,7 +129,7 @@ public class ConnectUsers extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent callIntent = new Intent(Intent.ACTION_CALL); //use ACTION_CALL class
-                callIntent.setData(Uri.parse("tel:" + phone));    //this is the phone number calling
+                callIntent.setData(Uri.parse("tel:" + phone_number));    //this is the phone number calling
                 //check permission
                 //If the device is running Android 6.0 (API level 23) and the app's targetSdkVersion is 23 or higher,
                 //the system asks the user to grant approval.
@@ -162,24 +162,5 @@ public class ConnectUsers extends AppCompatActivity {
             }
         });
 
-//        facebookThem.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent sendIntent = new Intent();
-//                sendIntent.setAction(Intent.ACTION_SEND);
-//                sendIntent
-//                        .putExtra(Intent.EXTRA_TEXT,
-//                                "Hello, I have requested blood type.");
-//                sendIntent.setType("text/plain");
-//                sendIntent.setPackage("com.facebook.orca");
-//                try {
-//                    startActivity(sendIntent);
-//                } catch (android.content.ActivityNotFoundException ex) {
-//                    Toast.makeText(ConnectUsers.this, "Please Install Facebook Messenger", Toast.LENGTH_LONG).show();
-//                }
-//
-//            }
-//        });
     }
 }

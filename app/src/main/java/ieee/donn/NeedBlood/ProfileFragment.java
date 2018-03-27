@@ -39,14 +39,14 @@ import ieee.donn.R;
 
 public class ProfileFragment extends Fragment {
 
-    FirebaseAuth mFirebaseAuth;
-    Button logout;
-    TextView name, email, phone, blood, facebook, country;
+            FirebaseAuth mFirebaseAuth;
+            Button logout;
+            TextView name, email, phone, blood, facebook, country;
 
 
 
-    String mUserId;
-    FirebaseUser mFirebaseUser;
+            String mUserId;
+            FirebaseUser mFirebaseUser;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -60,7 +60,7 @@ public class ProfileFragment extends Fragment {
         email = (TextView) root.findViewById(R.id.email);
         country = (TextView) root.findViewById(R.id.country);
         phone = (TextView) root.findViewById(R.id.phone);
-        facebook = (TextView) root.findViewById(R.id.facebook);
+       // facebook = (TextView) root.findViewById(R.id.facebook);
         blood = (TextView) root.findViewById(R.id.blood);
 
         logout = (Button) root.findViewById(R.id.logout);
