@@ -32,10 +32,10 @@ public class ConnectUsers extends AppCompatActivity {
     Toolbar toolbar;
     TextView data, patient;
     Button call, message, facebookThem;
- //   String blood, city, email, phone, facebook, name;
+    String blood, city, email, phone, facebook, name;
     FirebaseAuth mFirebaseAuth;
     Button logout;
-    TextView name, email, phone, blood, facebook, country;
+    //TextView name, email, phone, blood, facebook, country;
 String phone_number;
 
 
@@ -57,18 +57,22 @@ String phone_number;
                 String value = getIntent().getExtras().getString(key);
 
                 Log.e("dhg" , value);
-                if (key.equals("AnotherActivity")) {
+
+               // if (key.equals("AnotherActivity")) {
 
                     try {
 
                         JSONObject json_data = new JSONObject(value);
 
-//                        blood = json_data.getString("blood");
-//                        city = json_data.getString("country");
-//                        email = json_data.getString("email");
+
+                        city = json_data.getString("country");
+                       email = json_data.getString("email");
 //                      //  facebook = json_data.getString("facebook");
-//                        name = json_data.getString("name");
-//                        phone = json_data.getString("phone");
+                        name = json_data.getString("name");
+                        phone = json_data.getString("phone");
+                      //  Log.d(value, "This is my message");
+                    //    mUserId = value;
+
 
                     } catch (JSONException e) {
 
@@ -76,13 +80,13 @@ String phone_number;
 
                     }
 
-                }
+                //}
             }
 
         }
-        mFirebaseAuth = FirebaseAuth.getInstance();
-        mFirebaseUser = mFirebaseAuth.getCurrentUser();
-        mUserId = mFirebaseUser.getUid();
+     //   mFirebaseAuth = FirebaseAuth.getInstance();
+   //     mFirebaseUser = mFirebaseAuth.getCurrentUser();
+      //  mUserId = mFirebaseUser.getUid();
 
         data = (TextView) findViewById(R.id.data);
         patient = (TextView) findViewById(R.id.patient);
@@ -91,31 +95,31 @@ String phone_number;
         message = (Button) findViewById(R.id.message);
 
 
- //       data.setText("Phone :  " + phone + "\nEmail:  " + email );
-   //     patient.setText("Name :  " + name + "\nBlood Type :  " + blood);
+       data.setText("Phone :  " + phone + "\nEmail:  " + email );
+       patient.setText("Name :  " + name + "\nBlood Type :  " + blood);
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        mDatabase.child("users").child(mUserId).child("data").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-//                name.setText("" + dataSnapshot.child("name").getValue());
-//                email.setText("Email : " + dataSnapshot.child("email").getValue());
-//                //     facebook.setText("Facebook : " + dataSnapshot.child("facebook").getValue());
-//                country.setText("City : " + dataSnapshot.child("city").getValue());
-//                phone.setText("Phone : " + dataSnapshot.child("phone").getValue());
-//                blood.setText("Blood Type : " + dataSnapshot.child("blood_group").getValue());
-                data.setText("Phone :  " +  dataSnapshot.child("phone").getValue() + "\nEmail:  " + dataSnapshot.child("email").getValue() );
-                patient.setText("Name :  " + dataSnapshot.child("name").getValue() + "\nBlood Type :  " + dataSnapshot.child("blood_group").getValue());
-            phone_number =(dataSnapshot.child("phone").getValue()).toString();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
+//        mDatabase.child("users").child(mUserId).child("data").addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+////                name.setText("" + dataSnapshot.child("name").getValue());
+////                email.setText("Email : " + dataSnapshot.child("email").getValue());
+////                //     facebook.setText("Facebook : " + dataSnapshot.child("facebook").getValue());
+////                country.setText("City : " + dataSnapshot.child("city").getValue());
+////                phone.setText("Phone : " + dataSnapshot.child("phone").getValue());
+////                blood.setText("Blood Type : " + dataSnapshot.child("blood_group").getValue());
+//                data.setText("Phone :  " +  dataSnapshot.child("phone").getValue() + "\nEmail:  " + dataSnapshot.child("email").getValue() );
+//                patient.setText("Name :  " + dataSnapshot.child("name").getValue() + "\nBlood Type :  " + dataSnapshot.child("blood_group").getValue());
+//         //   phone_number =(dataSnapshot.child("phone").getValue()).toString();
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//
 
 
 
