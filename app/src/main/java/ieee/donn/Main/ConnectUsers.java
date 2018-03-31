@@ -58,7 +58,7 @@ String phone_number;
 
                 Log.e("dhg" , value);
 
-               // if (key.equals("AnotherActivity")) {
+               //  if (key.equals("AnotherActivity")) {
 
                     try {
 
@@ -133,7 +133,7 @@ String phone_number;
             public void onClick(View v) {
 
                 Intent callIntent = new Intent(Intent.ACTION_CALL); //use ACTION_CALL class
-                callIntent.setData(Uri.parse("tel:" + phone_number));    //this is the phone number calling
+                callIntent.setData(Uri.parse("tel:" + phone));    //this is the phone number calling
                 //check permission
                 //If the device is running Android 6.0 (API level 23) and the app's targetSdkVersion is 23 or higher,
                 //the system asks the user to grant approval.
