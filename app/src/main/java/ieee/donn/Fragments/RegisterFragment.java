@@ -31,6 +31,7 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -44,7 +45,7 @@ public class RegisterFragment extends Fragment {
     View root;
     Toolbar toolbar;
     Locale[] locale;
-    Spinner spinner , blood_type;
+    Spinner spinner , blood_type,gender;
     Button register;
     String country, blood_group;
     SharedPreferences spf;
@@ -52,7 +53,7 @@ public class RegisterFragment extends Fragment {
     ArrayList<String> cities , blood_group_list;
     ArrayAdapter<String> adapter;
     EditText name, email, phone, blood, facebook, password;
-    String nameStr, emailStr, phoneStr, bloodStr, facebookStr, passwordStr;
+    String nameStr, emailStr, phoneStr, bloodStr, facebookStr, passwordStr,gend;
 
     String mUserId;
     FirebaseAuth mFirebaseAuth;
@@ -70,11 +71,25 @@ public class RegisterFragment extends Fragment {
         phone = (EditText) root.findViewById(R.id.editText3);
        // facebook = (EditText) root.findViewById(R.id.editText5);
       //  blood = (EditText) root.findViewById(R.id.editText4);
+
+
         spinner = (Spinner) root.findViewById(R.id.spinner);
         blood_type = (Spinner) root.findViewById(R.id.blood_type);
 
         setupSpinner();
        setupSpinner1();
+        gender = (Spinner) root.findViewById(R.id.gender);
+        ArrayAdapter<String> adapter;
+        List<String> list = new ArrayList<String>();
+        list.add("Select Gender");
+        list.add("Male");
+        list.add("Female");
+        adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, list);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        gender.setAdapter(adapter);
+        gend=gender.getSelectedItem().toString();
+
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
